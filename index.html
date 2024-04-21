@@ -53,7 +53,7 @@
         const near = 0.1;
         const far = 100;
         const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-        camera.position.set( 0, 4, 20 );
+        camera.position.set( 0, 4, 4 );
 
         const controls = new OrbitControls( camera, canvas );
         controls.target.set( 0, 2, 0 );
@@ -126,9 +126,9 @@
         const box_geometry = new THREE.BoxGeometry(.4, .4, .4);
         
         const shapes = [
-          makeInstance(box_geometry, box_material, 3, .1, 0, 0, 0, 0),
-          makeInstance(box_geometry, box_material, 3, .1, 0, 0, 45, 0),
-          makeInstance(box_geometry, box_material, 3, .1, 0, 0, -45, 0)
+          makeInstance(box_geometry, box_material, 2.4, .1, 0, 0, 20, 0),
+          makeInstance(box_geometry, box_material, 2.4, .1, 0.4, 0, 22, 0),
+          makeInstance(box_geometry, box_material, 2.4, .5, 0.2, 0, -45, 0)
         ];
 
         {
