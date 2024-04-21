@@ -64,7 +64,7 @@
         controls.update();
         
         // fucking save
-        
+
         // Added glass plane
         {
           const planeSize = 7;
@@ -128,9 +128,9 @@
           const box_material = new THREE.MeshBasicMaterial({map: box_texture});
           const box_geometry = new THREE.BoxGeometry(.4, .4, .4);
           
-          const shapes = [
+          const boxes = [
             makeInstance(box_geometry, box_material, 2.4, .15, 0, 0, 20, 0),
-            makeInstance(box_geometry, box_material, 2.4, .15, 0.4, 0, 22, 0),
+            makeInstance(box_geometry, box_material, 2.4, .15, 0.4, 0, 21, 0),
             makeInstance(box_geometry, box_material, 2.4, .55, 0.2, 0, -45, 0)
           ];
         }
@@ -150,6 +150,26 @@
           } );
         }
 
+        // Add 15 Small Pebbles
+        {
+          const pebble_loader = new THREE.TextureLoader(.1,);
+          const pebble_texture = pebble_loader.load("rock_seamless.png");
+          pebble_texture.colorSpace = THREE.SRGBColorSpace;
+          const pebble_material = new THREE.MeshBasicMaterial({map: pebble_texture});
+          const pebble_geometry = new THREE.SphereGeometry(.1,16,17);
+
+
+          function gr(min, max) {
+            return Math.random() * (max - min) + min;
+          }
+
+
+
+          // Random x and z position
+          const spheres = [
+            makeInstance(pebble_geometry, pebble_material, gr(-5,5), .15, gr(-5,5), gr(0,360), gr(0,360), gr(0,360)),
+          ];
+        }
         // Rendering
         function resizeRendererToDisplaySize(renderer) {
             const canvas = renderer.domElement;
