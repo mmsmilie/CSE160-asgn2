@@ -188,6 +188,7 @@
         }
         
         // Add Triangle Fruit
+        const fruits = [];
         {
           const fruit_loader = new THREE.TextureLoader();
           const fruit_texture = fruit_loader.load("fruit_seamless.jpg");
@@ -195,12 +196,9 @@
           const fruit_material = new THREE.MeshBasicMaterial({map: fruit_texture});
           const fruit_geometry = new THREE.CylinderGeometry(.1,.15,.2,7,1);
 
-          const fruits = [
-            makeInstance(fruit_geometry, fruit_material, -0.5, 0.9, 0.2, 0, 0, 0),
-            makeInstance(fruit_geometry, fruit_material, -0.5, 1.1, -0.2, 0, 0, 0),
-            makeInstance(fruit_geometry, fruit_material, 0.5, 1, -0.2, 0, 0, 0),
-          ]
-
+          fruits.add(makeInstance(fruit_geometry, fruit_material, -0.5, 0.9, 0.2, 0, 0, 0));
+          fruits.add(makeInstance(fruit_geometry, fruit_material, -0.5, 1.1, -0.2, 0, 0, 0));
+          fruits.add(makeInstance(fruit_geometry, fruit_material, 0.5, 1, -0.2, 0, 0, 0));
         }
         
         
