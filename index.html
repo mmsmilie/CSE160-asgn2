@@ -193,7 +193,7 @@
           const fruit_texture = fruit_loader.load("fruit_seamless.jpg");
           fruit_texture.colorSpace = THREE.SRGBColorSpace;
           const fruit_material = new THREE.MeshBasicMaterial({map: fruit_texture});
-          const fruit_geometry = new THREE.CylinderGeometry(1,1,1,7,1);
+          const fruit_geometry = new THREE.CylinderGeometry(.5,1,1,7,1);
 
           const fruits = [
             makeInstance(fruit_geometry, fruit_material, 0, 0, 0, 0, 0, 0),
