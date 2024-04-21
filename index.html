@@ -96,6 +96,23 @@ html, body {
             scene.add(light);
         }
 
+        {
+            const mtlLoader = new MTLLoader();
+            mtlLoader.load(
+            "materials.mtl",
+            (mtl) => {
+                mtl.preload();
+                const objLoader = new OBJLoader();
+                mtl.materials.Material.side = THREE.DoubleSide;
+                objLoader.setMaterials(mtl);
+                objLoader.load(
+                "tree.obj",
+                (root) => {scene.add(root);}
+                );
+            }
+            );
+        }
+
 
         function resizeRendererToDisplaySize(renderer) {
             const canvas = renderer.domElement;
@@ -131,5 +148,11 @@ html, body {
     main()
 
   </script>
+<!-- 
+    Credits:
+    Tree by Marc Solà [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/6Yjt8nIwLsD)
+    grass_seammless.png from 123rf.com
 
+
+-->
 </html>
