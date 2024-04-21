@@ -66,7 +66,7 @@
 
         // Added glass plane
         {
-          const planeSize = 10;
+          const planeSize = 7;
 
           const grass_loader = new THREE.TextureLoader();
           const texture = grass_loader.load(grass_image_url);
@@ -123,11 +123,12 @@
         const box_texture = box_loader.load("wooden_crate.png");
         box_texture.colorSpace = THREE.SRGBColorSpace;
         const box_material = new THREE.MeshBasicMaterial({map: box_texture});
-        const box_geometry = new THREE.BoxGeometry(.2, .2, .2);
-        const cubes = [
-          makeInstance(box_geometry, box_material,  0, .1,  0, 0, 0, 0),
-          makeInstance(box_geometry, box_material, .5, .1, 0, 0, 45, 0),
-          makeInstance(box_geometry, box_material,  0, .1, 0, 0, -45, 0)
+        const box_geometry = new THREE.BoxGeometry(.4, .4, .4);
+        
+        const shapes = [
+          makeInstance(box_geometry, box_material, 3, .1, 0, 0, 0, 0),
+          makeInstance(box_geometry, box_material, 3, .1, 0, 0, 45, 0),
+          makeInstance(box_geometry, box_material, 3, .1, 0, 0, -45, 0)
         ];
 
         {
