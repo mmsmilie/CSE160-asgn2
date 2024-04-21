@@ -96,21 +96,28 @@ html, body {
             scene.add(light);
         }
 
+        // {
+        //     const mtlLoader = new MTLLoader();
+        //     mtlLoader.load(
+        //     "materials.mtl",
+        //     (mtl) => {
+        //         mtl.preload();
+        //         const objLoader = new OBJLoader();
+        //         mtl.materials.Material.side = THREE.DoubleSide;
+        //         objLoader.setMaterials(mtl);
+        //         objLoader.load(
+        //         "tree.obj",
+        //         (root) => {scene.add(root);}
+        //         );
+        //     }
+        //     );
+        // }
+
         {
-            const mtlLoader = new MTLLoader();
-            mtlLoader.load(
-            "materials.mtl",
-            (mtl) => {
-                mtl.preload();
-                const objLoader = new OBJLoader();
-                mtl.materials.Material.side = THREE.DoubleSide;
-                objLoader.setMaterials(mtl);
-                objLoader.load(
-                "tree.obj",
-                (root) => {scene.add(root);}
-                );
-            }
-            );
+            const objLoader = new OBJLoader();
+            objLoader.load('tree.obj', (root) => {
+                scene.add(root);
+            });
         }
 
 
