@@ -116,6 +116,7 @@ html, body {
         {
             const objLoader = new OBJLoader();
             objLoader.load('tree.obj', (root) => {
+                root.position.y = 10;
                 scene.add(root);
             });
         }
