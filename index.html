@@ -125,6 +125,12 @@
           light2.target.position.set( - 5, 0, 0 );
           scene.add( light2 );
           scene.add( light2.target ); 
+
+          const color2 = 0xFFFFFF;
+          const intensity3 = 1;
+          const light3 = new THREE.AmbientLight(color2, intensity3);
+          scene.add(light3);
+
         }
 
         function makeInstance( geometry, material, x, y, z, rx, ry, rz) {
@@ -256,7 +262,13 @@
     
 
     // Total amount of Objects
-    // 
+    // 3 Boxes
+    // 3 Fruit
+    // 16 Pebb rocks
+    // 1 Tree
+    // 23 Objects
+    // Total cpu usage 88%
+    // man my computer sucks
     main();
 
   </script>
