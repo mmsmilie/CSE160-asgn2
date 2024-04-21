@@ -48,21 +48,21 @@
           alpha: true,
         });
 
-        const fov = 45;
-        const aspect = 2; // the canvas default
-        const near = 0.1;
-        const far = 100;
-        const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-        camera.position.set( 0, 4, 4 );
+        // Camera
+        {
+          const fov = 45;
+          const aspect = 2; // the canvas default
+          const near = 0.1;
+          const far = 100;
+          const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+          camera.position.set( 0, 4, 4 );
 
-        const controls = new OrbitControls( camera, canvas );
-        controls.target.set( 0, 2, 0 );
-        controls.update();
+          const controls = new OrbitControls( camera, canvas );
+          controls.target.set( 0, .5, 0 );
+          controls.update();
 
-        const scene = new THREE.Scene();
-
-        // Change this to the sky some time when adding skybox
-        scene.background = new THREE.Color( 'black' );
+          const scene = new THREE.Scene();
+        }
 
         // Added glass plane
         {
@@ -119,18 +119,22 @@
           return cube;
         }
 
-        const box_loader = new THREE.TextureLoader();
-        const box_texture = box_loader.load("wooden_crate.png");
-        box_texture.colorSpace = THREE.SRGBColorSpace;
-        const box_material = new THREE.MeshBasicMaterial({map: box_texture});
-        const box_geometry = new THREE.BoxGeometry(.4, .4, .4);
+        // Add boxes
+        {
+          const box_loader = new THREE.TextureLoader();
+          const box_texture = box_loader.load("wooden_crate.png");
+          box_texture.colorSpace = THREE.SRGBColorSpace;
+          const box_material = new THREE.MeshBasicMaterial({map: box_texture});
+          const box_geometry = new THREE.BoxGeometry(.4, .4, .4);
+          
+          const shapes = [
+            makeInstance(box_geometry, box_material, 2.4, .15, 0, 0, 20, 0),
+            makeInstance(box_geometry, box_material, 2.4, .15, 0.4, 0, 22, 0),
+            makeInstance(box_geometry, box_material, 2.4, .55, 0.2, 0, -45, 0)
+          ];
+        }
         
-        const shapes = [
-          makeInstance(box_geometry, box_material, 2.4, .1, 0, 0, 20, 0),
-          makeInstance(box_geometry, box_material, 2.4, .1, 0.4, 0, 22, 0),
-          makeInstance(box_geometry, box_material, 2.4, .5, 0.2, 0, -45, 0)
-        ];
-
+        // Add Tree
         {
           const mtlLoader = new MTLLoader();
           mtlLoader.load( 'materials.mtl', ( mtl ) => {
@@ -145,7 +149,7 @@
           } );
         }
 
-
+        // Rendering
         function resizeRendererToDisplaySize(renderer) {
             const canvas = renderer.domElement;
             const width = canvas.clientWidth;
