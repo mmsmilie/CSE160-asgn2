@@ -124,12 +124,12 @@
         const box_loader = new THREE.TextureLoader();
         const box_texture = box_loader.load("wooden_crate.png");
         box_texture.colorSpace = THREE.SRGBColorSpace;
-        const material = new THREE.MeshBasicMaterial({map: box_texture});
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const box_material = new THREE.MeshBasicMaterial({map: box_texture});
+        const box_geometry = new THREE.BoxGeometry(1, 1, 1);
         const cubes = [
-          makeInstance(geometry, material,  0, 0,  0, 0, 0, 0),
-          makeInstance(geometry, material, -2, 0, 0, 45, 0, 0),
-          makeInstance(geometry, material,  -1, 1, 0, -45, 0, 0)
+          makeInstance(box_geometry, box_material,  0, 0,  0, 0, 0, 0),
+          makeInstance(box_geometry, box_material, -2, 0, 0, 45, 0, 0),
+          makeInstance(box_geometry, box_material,  -1, 1, 0, -45, 0, 0)
         ];
 
         {
