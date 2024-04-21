@@ -196,9 +196,9 @@
           const fruit_geometry = new THREE.CylinderGeometry(.1,.15,.2,7,1);
 
           const fruits = [
-            makeInstance(fruit_geometry, fruit_material, -0.5, .9, .2, 0, 0, 0),
-            makeInstance(fruit_geometry, fruit_material, -0.5, 1.1, -.2, 0, 0, 0),
-            //makeInstance(fruit_geometry, fruit_material, 1, 1, 0, 0, 0, 0),
+            makeInstance(fruit_geometry, fruit_material, -0.5, 0.9, 0.2, 0, 0, 0),
+            makeInstance(fruit_geometry, fruit_material, -0.5, 1.1, -0.2, 0, 0, 0),
+            makeInstance(fruit_geometry, fruit_material, 0.5, 1, -0.2, 0, 0, 0),
           ]
 
         }
@@ -217,7 +217,7 @@
             return needResize;
         }
 
-        function render() {
+        function render(time) {
             if (resizeRendererToDisplaySize(renderer)) {
             const canvas = renderer.domElement;
             camera.aspect = canvas.clientWidth / canvas.clientHeight;
@@ -225,6 +225,10 @@
             }
 
             renderer.render(scene, camera);
+
+            fruits.forEach(fruit => {
+              fruit.rotation.y += time;
+            })
 
             requestAnimationFrame(render);
         }
