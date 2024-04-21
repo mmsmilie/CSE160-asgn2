@@ -150,7 +150,7 @@
           } );
         }
 
-        // Add 15 Small Pebbles
+        // Add 16 Small Pebbles
         {
           const pebble_loader = new THREE.TextureLoader();
           const pebble_texture = pebble_loader.load("rock_seamless.png");
@@ -186,6 +186,24 @@
             makeInstance(pebble_geometry, pebble_material, gr(-3,3), .05, gr(-3,3), gr(0,360), gr(0,360), gr(0,360)),
           ];
         }
+        
+        // Add Triangle Fruit
+        {
+          const fruit_loader = new THREE.TextureLoader();
+          const fruit_texture = fruit_loader.load("fruit_seamless.png");
+          fruit_texture.colorSpace = THREE.SRGBColorSpace;
+          const fruit_material = new THREE.MeshBasicMaterial({map: fruit_texture});
+          const fruit_geometry = new THREE.CylinderGeomtry(.5,5,10,7,1);
+
+          const fruits = [
+            makeInstance(fruit_geometry, fruit_material, 0, 0, 0, 0, 0, 0),
+            makeInstance(fruit_geometry, fruit_material, 0, 0, 0, 0, 0, 0),
+            makeInstance(fruit_geometry, fruit_material, 0, 0, 0, 0, 0, 0),
+          ]
+
+        }
+        
+        
         // Rendering
         function resizeRendererToDisplaySize(renderer) {
             const canvas = renderer.domElement;
@@ -222,7 +240,7 @@
     grass_seammless.png from 123rf.com
     sky_seamless.png from https://opengameart.org/content/seamless-sky-backgrounds
     wooden_crate.png from https://opengameart.org/content/pixel-wooden-crate
-    rock texture frp, https://www.deviantart.com/lauris71/art/Seamless-Rock-Texture-A-273637565
-    
+    rock texture from https://www.deviantart.com/lauris71/art/Seamless-Rock-Texture-A-273637565
+    fruit_seamless from https://www.textures.com/browse/fruit/24912
 -->
 </html>
