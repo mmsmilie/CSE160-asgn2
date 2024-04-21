@@ -118,13 +118,13 @@
           const light = new THREE.HemisphereLight(skyColor,groundColor,intensity);
           scene.add(light);
 
-          const gui = new GUI();
-          gui.addColor( new ColorGUIHelper( light, 'color' ), 'value' ).name( 'color' );
-          gui.add( light, 'intensity', 0, 5, 0.01 );
-          gui.add( light.target.position, 'x', - 10, 10, .01 );
-          gui.add( light.target.position, 'z', - 10, 10, .01 );
-          gui.add( light.target.position, 'y', 0, 10, .01 );
-
+          const color = 0xFFFFFF;
+          const intensity2 = 1;
+          const light2 = new THREE.DirectionalLight( color, intensity2 );
+          light2.position.set( 0, 10, 0 );
+          light2.target.position.set( - 5, 0, 0 );
+          scene.add( light2 );
+          scene.add( light2.target ); 
         }
 
         function makeInstance( geometry, material, x, y, z, rx, ry, rz) {
@@ -254,6 +254,9 @@
         requestAnimationFrame(render);
     }
     
+
+    // Total amount of Objects
+    // 
     main();
 
   </script>
